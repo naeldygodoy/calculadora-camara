@@ -111,13 +111,10 @@ elif "Congelados" in temp_desejada:
 else:
     chapas_5cm, chapas_10cm = 0, placas_piso_por_camada * 2
 
-# ================= LOGICA DOS ACESSÓRIOS CORRIGIDA =================
+# ================= LOGICA DOS ACESSÓRIOS =================
 trilho_inox_pcs = math.ceil(larg_p)
-
-# CORREÇÃO: Suportes calculados sobre a metragem comercial do trilho vendido (6 por metro de barra)
 suporte_trilho_pcs = trilho_inox_pcs * 6
 
-# Ajuste da cortina para acompanhar os tirantes do suporte comercial real
 altura_tira = alt_p + 0.10
 metragem_total_cortina = suporte_trilho_pcs * altura_tira
 metragem_comercial_cortina = math.ceil(metragem_total_cortina / 10.0) * 10
@@ -165,6 +162,7 @@ with col_direita:
     st.markdown("---")
     st.markdown("### 📋 Lista de Materiais (Isolamento)")
     
+    # CORRIGIDO: Modificado de :.2m para :.2f nas especificações de texto
     dados_tabela = [
         {"Item": "Total de painéis de parede", "Quantidade": f"{total_paineis_parede} pçs", "Descrição": f"Painéis de {alt_painel:.2f}m x {larg_modulo:.2f}m x {espessura_teto:.2f}m"},
         {"Item": "Total de painéis de teto", "Quantidade": f"{total_paineis_teto} pçs", "Descrição": f"Painéis de {comprimento_painel_teto:.2f}m x {larg_modulo:.2f}m x {espessura_teto:.2f}m"},
@@ -176,6 +174,7 @@ with col_direita:
     
     st.markdown("### 🛠️ 3. Acessórios de Isolamento e Portas")
     
+    # CORRIGIDO: Chaves de dicionário inexistentes mapeadas direto para as variáveis calculadas corretamente
     tabela_acessorios = [
         {"Item": "Trilho Inox", "Quantidade": f"{trilho_inox_pcs} pç", "Descrição": f"Trilho comercial de {trilho_inox_pcs:.2f}m para vão de {larg_p:.2f}m"},
         {"Item": "Suporte de Trilho", "Quantidade": f"{suporte_trilho_pcs} pçs", "Descrição": "Fixadores do trilho (Garante 6 pçs por metro linear de barra)"},
