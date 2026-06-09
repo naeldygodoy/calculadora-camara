@@ -111,7 +111,7 @@ elif "Congelados" in temp_desejada:
 else:
     chapas_5cm, chapas_10cm = 0, placas_piso_por_camada * 2
 
-# ================= LOGICA DOS ACESSÓRIOS =================
+# ================= LOGICA DOS ACESSÓRIOS CORRIGIDA =================
 trilho_inox_pcs = math.ceil(larg_p)
 suporte_trilho_pcs = trilho_inox_pcs * 6
 
@@ -162,7 +162,7 @@ with col_direita:
     st.markdown("---")
     st.markdown("### 📋 Lista de Materiais (Isolamento)")
     
-    # CORRIGIDO: Modificado de :.2m para :.2f nas especificações de texto
+    # CORREÇÃO DO VALUEERROR: Mudança manual de :.2m para :.2f
     dados_tabela = [
         {"Item": "Total de painéis de parede", "Quantidade": f"{total_paineis_parede} pçs", "Descrição": f"Painéis de {alt_painel:.2f}m x {larg_modulo:.2f}m x {espessura_teto:.2f}m"},
         {"Item": "Total de painéis de teto", "Quantidade": f"{total_paineis_teto} pçs", "Descrição": f"Painéis de {comprimento_painel_teto:.2f}m x {larg_modulo:.2f}m x {espessura_teto:.2f}m"},
@@ -174,7 +174,7 @@ with col_direita:
     
     st.markdown("### 🛠️ 3. Acessórios de Isolamento e Portas")
     
-    # CORRIGIDO: Chaves de dicionário inexistentes mapeadas direto para as variáveis calculadas corretamente
+    # CORREÇÃO DO KEYERROR: Removido o dicionário fantasma 'res_acessorios' e mapeado para as variáveis reais
     tabela_acessorios = [
         {"Item": "Trilho Inox", "Quantidade": f"{trilho_inox_pcs} pç", "Descrição": f"Trilho comercial de {trilho_inox_pcs:.2f}m para vão de {larg_p:.2f}m"},
         {"Item": "Suporte de Trilho", "Quantidade": f"{suporte_trilho_pcs} pçs", "Descrição": "Fixadores do trilho (Garante 6 pçs por metro linear de barra)"},
